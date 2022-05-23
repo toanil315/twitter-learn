@@ -1,12 +1,14 @@
 import { CalendarIcon, EmojiHappyIcon, LocationMarkerIcon, PhotographIcon, SearchCircleIcon } from '@heroicons/react/outline'
+import { useSession } from 'next-auth/react'
 import React, { useState } from 'react'
 
 export default function TweetBox() {
     const [tweetInput, setTweetInput] = useState<string>("")
+    const {data: session} = useSession()
 
   return (
     <div className="mt-4 flex space-x-2">
-        <img className="h-12 w-12 rounded-full" src="https://links.papareact.com/gll" alt="default image" />
+        <img className="h-12 w-12 rounded-full" src={session?.user?.image || "https://links.papareact.com/gll"} alt="default image" />
         <form className="flex-1">
             <input onChange={(e) => {setTweetInput(e.target.value)}} value={tweetInput} className="w-full outline-none py-4 text-lg" type="text" placeholder="What's Happening" />
             <div className="flex items-center justify-between">
@@ -17,7 +19,7 @@ export default function TweetBox() {
                     <CalendarIcon className="h-5  text-twitter hover:scale-125 transition-transform duration-200 ease-out cursor-pointer" />
                     <LocationMarkerIcon className="h-5  text-twitter hover:scale-125 transition-transform duration-200 ease-out cursor-pointer" />
                 </div>
-                <button disabled={!tweetInput} className="px-5 py-1 rounded-full bg-twitter text-white font-bold hover:bg-blue-500 transition duration-150 disabled:bg-blue-200">Tweet</button>
+                <button disabled={!session || !tweetInput} className="px-5 py-1 rounded-full bg-twitter text-white font-bold hover:bg-blue-500 transition duration-150 disabled:bg-blue-200">Tweet</button>
             </div>
         </form>
     </div>
