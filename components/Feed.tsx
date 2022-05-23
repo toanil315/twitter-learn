@@ -29,7 +29,7 @@ export default function Feed({tweets: tweetsProp}: Props) {
         <RefreshIcon onClick={handleRefreshTweets} className="h-7 text-twitter hover:rotate-180 active:scale-125 transition-all duration-200 ease-out cursor-pointer" />
       </div>
 
-      <TweetBox />
+      <TweetBox setTweets={setTweets} />
 
       <div className="mt-5">
           {

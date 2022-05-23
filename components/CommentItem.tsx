@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Comment } from '../types'
 import TimeAgo from 'react-timeago'
 
@@ -7,8 +7,9 @@ interface Props {
 }
 
 export default function CommentItem({comment} : Props) {
+
   return (
-    <div className='flex items-start space-x-3 mt-3 py-3 px-1 md:px-2 bg-gray-100 rounded-lg'>
+    <div className='flex items-start space-x-3 mt-3 py-3 px-1 md:px-2 bg-gray-50 rounded-lg'>
         <div className='relative'>
             <img className='w-9 h-9 rounded-full object-cover' src={comment.profileImg} alt="profile image" />
         </div>

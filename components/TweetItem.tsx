@@ -32,13 +32,13 @@ export default function TweetItem({tweet}: Props) {
                 </div>
                 <p className="mt-2 font-semibold text-gray-600">{tweet.text}</p>
                 <img className="max-h-60 lg:max-h-72
-                 w-full object-cover rounded-lg shadow-md mt-2" src={tweet.image} alt="tweet image" />
+                 object-cover rounded-lg shadow-md mt-2" src={tweet.image} alt="tweet image" />
             </div>
         </div>
         <div className="mt-5 flex justify-between">
             <div className="flex items-center space-x-3">
                 <ChatAlt2Icon className='h-5 text-gray-500' />
-                <p>5</p>
+                <p>{comments.length ? comments.length : ""}</p>
             </div>
             <div className="flex items-center space-x-3">
                 <SwitchHorizontalIcon className='h-5 text-gray-500' />
