@@ -1,13 +1,25 @@
-import React from 'react'
-import { Tweet } from '../types'
+import React, { useEffect, useState } from 'react'
+import { Comment, Tweet } from '../types'
 import TimeAgo from 'react-timeago'
 import { ChatAlt2Icon, HeartIcon, SwitchHorizontalIcon, UploadIcon } from '@heroicons/react/outline'
+import { fetchComments } from '../utils/fetchComments'
+import CommentItem from './CommentItem'
 
 interface Props {
     tweet: Tweet
 }
 
 export default function TweetItem({tweet}: Props) {
+    const [comments, setComments] = useState<Comment[]>([])
+    useEffect(() => {
+        const handleFetchComment = async (tweetId: string) => {
+            const commentList: Comment[] = await fetchComments(tweetId)
+            setComments(commentList)
+        }
+
+        handleFetchComment(tweet._id)
+    }, [])
+
   return (
     <div className="py-4 border-t border-gray-100">
         <div className="flex space-x-2">
@@ -37,6 +49,13 @@ export default function TweetItem({tweet}: Props) {
             <div className="flex items-center space-x-3">
                 <UploadIcon className='h-5 text-gray-500' />
             </div>
+        </div>
+        <div>
+            {
+                comments.map((comment, index) => {
+                    return <CommentItem key={comment._id} comment={comment} />
+                })
+            }
         </div>
     </div>
   )
