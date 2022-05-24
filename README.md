@@ -23,3 +23,4 @@ pnpm create next-app -- --example with-tailwindcss with-tailwindcss-app
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
 
 Studio hostname: [twitter-learn-nextjs.sanity.studio](https://twitter-learn-nextjs.sanity.studio/) 
+Link: https://twitter-learn.vercel.app [twitter-learn-nextjs](https://twitter-learn.vercel.app) 
