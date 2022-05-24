@@ -54,7 +54,8 @@ export default function TweetItem({ tweet }: Props) {
 
     await postComment()
 
-    await handleFetchComment(tweet._id)
+    const commentList: Comment[] = await fetchComments(tweet._id)
+    setComments(commentList)
 
     setCommentInput("")
     setShowCommentBox(false)
